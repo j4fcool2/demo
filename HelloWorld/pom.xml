@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.twc.sample</groupId>
+	<artifactId>HelloWorld</artifactId>
+	<version>1.0.0.0-SNAPSHOT</version>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>sca-compile</id>
+						<phase>compile</phase>
+						<configuration>
+							<target>
+								<property name="scac.input" value="${basedir}/composite.xml" />
+								<ant antfile="C:/Oracle/Middleware/Jdev11117/jdeveloper/bin/ant-sca-compile.xml" dir="C:/Oracle/Middleware/Jdev11117/jdeveloper/bin" target="scac" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>sca-package</id>
+						<phase>package</phase>
+						<configuration>
+							<target>
+								<property name="build.compiler" value="extJavac" />
+								<property name="compositeName" value="${project.artifactId}" />
+								<property name="compositeDir" value="${basedir}" />
+								<property name="revision" value="${project.version}" />
+								<ant antfile="C:/Oracle/Middleware/Jdev11117/jdeveloper/bin/ant-sca-package.xml" dir="C:/Oracle/Middleware/Jdev11117/jdeveloper/bin/" target="package" />
+								<echo>************* PACKAGING COMPLETE ***************</echo>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>  
+
+					<execution>
+						<id>copy</id>
+						<phase>package</phase>
+						<configuration>
+							<target name="Copy composite jar file to target directory for deployment to repository">
+								<copy file="${basedir}/deploy/sca_${project.artifactId}_rev${project.version}.jar" tofile="${basedir}/target/sca_${project.artifactId}_rev${project.version}.jar"  overwrite="true"/>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution> 
+
+
+				</executions> 
+			</plugin>
+
+		</plugins>
+	</build>
+
+
+
+
+
+</project>

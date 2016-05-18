@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <property name="build.compiler" value="extJavac"/>
+  <property name="compositeName" value="HelloWorld"/>
+  <property name="compositeDir" value="C:\TWCProjects\Sample\HelloWorld"/>
+  <property name="revision" value="1.0.0.0-SNAPSHOT"/>
+  <ant antfile="C:/Oracle/Middleware/Jdev11117/jdeveloper/bin/ant-sca-package.xml" dir="C:/Oracle/Middleware/Jdev11117/jdeveloper/bin/" target="package"/>
+  <echo>************* PACKAGING COMPLETE ***************</echo>
+</target>
+</project>

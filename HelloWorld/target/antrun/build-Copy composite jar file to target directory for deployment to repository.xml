@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="Copy composite jar file to target directory for deployment to repository"  >
+<target name="Copy composite jar file to target directory for deployment to repository">
+  <copy file="C:\TWCProjects\Sample\HelloWorld/deploy/sca_HelloWorld_rev1.0.0.0-SNAPSHOT.jar" overwrite="true" tofile="C:\TWCProjects\Sample\HelloWorld/target/sca_HelloWorld_rev1.0.0.0-SNAPSHOT.jar"/>
+</target>
+</project>
